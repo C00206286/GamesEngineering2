@@ -30,3 +30,20 @@ void MacroCommand::execute()
 	}
 	std::cout << "executed" << std::endl;
 }
+void MacroCommand::undo()
+{
+	if (Commands.size() > 0)
+	{
+		undoneCommand = Commands.back();
+		Commands.pop_back();
+		undone = true;
+	}
+}
+void MacroCommand::redo()
+{
+	if (undone == true)
+	{
+		Commands.push_back(undoneCommand);
+		undone = false;
+	}
+}
