@@ -14,6 +14,7 @@ MacroCommand::~MacroCommand()
 void MacroCommand::add(Command* command)
 {
 	Commands.push_back(command);
+	undone = false;
 }
 
 void MacroCommand::remove(Command* command)
@@ -35,15 +36,19 @@ void MacroCommand::undo()
 	if (Commands.size() > 0)
 	{
 		undoneCommand = Commands.back();
+		UndoneCommands.push_back(undoneCommand);
 		Commands.pop_back();
 		undone = true;
+		std::cout << "Undone" << std::endl;
 	}
 }
 void MacroCommand::redo()
 {
-	if (undone == true)
+	//if (undone == true)
+	if(UndoneCommands.size() > 0 && undone == true)
 	{
-		Commands.push_back(undoneCommand);
-		undone = false;
+		Commands.push_back(UndoneCommands.back());
+		UndoneCommands.pop_back();
+		std::cout << "Redone" << std::endl;
 	}
 }

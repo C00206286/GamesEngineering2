@@ -14,6 +14,7 @@ public:
 	virtual void execute();
 private:
 	std::list<Command*> Commands;
+	std::list<Command*> UndoneCommands;
 	Command * undoneCommand;
 	bool undone = false;
 };
