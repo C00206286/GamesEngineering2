@@ -15,12 +15,26 @@ public:
 		Idle,
 		Climbing
 	};
+	enum Animations
+	{
+		IdleAni,
+		jumpingToIdle,
+		idleToJumping,
+		idleToClimbing,
+		climbingToIdle,
+		idling
+	};
 	void handleInput(SDL_Event & event);
 	void setCurrent(States);
+	void setCount(double count);
+	double getCount();
 	States getCurrent();
+	void setCurrentAni(Animations);
+	Animations getCurrentAni();
 
 private:
 
 	Animation * finiteStateMachine;
 	States current;
+	Animations currentAni;
 };

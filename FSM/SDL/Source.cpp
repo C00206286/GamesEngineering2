@@ -12,6 +12,9 @@
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
 
+double animationCount = 0;
+double delayCount = 0;
+
 InputHandler * handler = new InputHandler();
 
 SDL_Rect rectMove;
@@ -52,8 +55,10 @@ bool init()
 	rectImage.h = 85;
 	rectImage.w = 85;
 
+
 	//Initialization flag
 	bool success = true;
+
 
 	//Initialize SDL
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
@@ -177,35 +182,152 @@ int main(int argc, char* args[])
 				while (SDL_PollEvent(&e) != 0)
 				{
 					handler->handleInput(e);
-
-
+		
 					//User requests quit
 					if (e.type == SDL_QUIT)
 					{
 						quit = true;
 					}
 				}
-				if (handler->getCurrent() == handler->Climbing)
+				if (handler->getCurrentAni() == handler->IdleAni)
+				{
+					rectImage.y = 0;
+					rectImage.x = 425;
+					delayCount = delayCount + 1;
+					if (delayCount > 10000)
+					{
+						animationCount = 0;
+						delayCount = 0;
+						handler->setCurrentAni(handler->idling);
+					}
+				}
+				if (handler->getCurrentAni() == handler->idling)
 				{
 					rectImage.x = 0;
-				}
-				if (handler->getCurrent() == handler->Idle)
-				{
-					rectImage.x = 170;
-				}
-				if (handler->getCurrent() == handler->Jumping)
-				{
-					rectImage.x = 85;
-				}
-				
+					rectImage.y = 425;
+					if (rectImage.x < 510)
+					{
+						rectImage.x = rectImage.x + 85 * animationCount;
+						if (delayCount > 1000)
+						{
+							if (animationCount < 5)
+							{
+								animationCount = animationCount + 1;
+								delayCount = 0;
+								std::cout << "ani count = " << animationCount << std::endl;
 
-				rectImage.y = 0;
+							}
+							if (animationCount == 5)
+							{
+								animationCount = 0;
+								handler->setCurrentAni(handler->IdleAni);
+							}
+						}
+						delayCount = delayCount + 1;
+					}
+				}
+				if (handler->getCurrentAni() == handler->idleToClimbing)
+				{
+					rectImage.x = 425;
+					rectImage.y = 0;
+					if (rectImage.x > 0)
+					{
+						rectImage.x = rectImage.x - 85 * animationCount;
+						if (delayCount > 1000)
+						{
+							if (animationCount < 5)
+							{
+
+									animationCount = animationCount + 1;
+									delayCount = 0;
+								
+							}
+							if (animationCount == 5)
+							{
+								animationCount = 0;
+								handler->setCurrentAni(handler->climbingToIdle);
+							}
+						}
+						delayCount = delayCount + 1;
+					}
+				}
+				if (handler->getCurrentAni() == handler->idleToJumping)
+				{
+					rectImage.x = 0;
+					rectImage.y = 340;
+					if (rectImage.x < 510)
+					{
+						rectImage.x = rectImage.x + 85 * animationCount;
+						if (delayCount > 1000)
+						{
+							if (animationCount < 5)
+							{
+									animationCount = animationCount + 1;
+									delayCount = 0;
+							
+							}
+							if (animationCount == 5)
+							{
+								animationCount = 0;
+								handler->setCurrentAni(handler->jumpingToIdle);
+							}
+						}
+						delayCount = delayCount + 1;
+					}
+				}
+				if (handler->getCurrentAni() == handler->jumpingToIdle)
+				{
+					rectImage.x = 425;
+					rectImage.y = 340;
+					if (rectImage.x > 0)
+					{
+						rectImage.x = rectImage.x - 85 * animationCount;
+						if (delayCount > 1000)
+						{
+							if (animationCount < 5)
+							{
+									animationCount = animationCount + 1;
+									delayCount = 0;							
+							}
+							if (animationCount == 5)
+							{
+								handler->setCurrent(handler->Idle);
+								animationCount = 0;
+								handler->setCurrentAni(handler->IdleAni);
+							}
+
+						
+						}
+						delayCount = delayCount + 1;
+					}
+				}
+				if (handler->getCurrentAni() == handler->climbingToIdle)
+				{
+					rectImage.x = 0;
+					rectImage.y = 0;
+					if (rectImage.x < 510)
+					{
+						rectImage.x = rectImage.x + 85 * animationCount;
+						if (delayCount > 1000)
+						{
+							if (animationCount < 5)
+							{
+									animationCount = animationCount + 1;
+									delayCount = 0;						
+							}
+							if (animationCount == 5)
+							{
+								handler->setCurrent(handler->Idle);
+								animationCount = 0;
+								handler->setCurrentAni(handler->IdleAni);
+							}
+
+						}
+						delayCount = delayCount + 1;
+					}
+				}
 				rectImage.h = 85;
 				rectImage.w = 85;
-				if (rectImage.x > 510)
-				{
-					rectImage.x = 0;
-				}
 				//Apply the PNG image
 				SDL_BlitSurface(gPNGSurface, &rectImage, gScreenSurface, &rectMove);
 

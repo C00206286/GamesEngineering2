@@ -1,2 +1,7 @@
 ﻿  Source.cpp
+c:\users\gameuser\desktop\gamesengineering2\fsm\sdl\source.cpp(210): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\gameuser\desktop\gamesengineering2\fsm\sdl\source.cpp(235): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\gameuser\desktop\gamesengineering2\fsm\sdl\source.cpp(260): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\gameuser\desktop\gamesengineering2\fsm\sdl\source.cpp(284): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\gameuser\desktop\gamesengineering2\fsm\sdl\source.cpp(310): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
   SDL.vcxproj -> C:\Users\gameuser\Desktop\GamesEngineering2\FSM\Debug\SDL.exe

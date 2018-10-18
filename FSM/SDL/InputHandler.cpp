@@ -14,10 +14,18 @@ void InputHandler::setCurrent(States state)
 {
 	current = state;
 }
+void InputHandler::setCurrentAni(Animations ani)
+{
+	currentAni = ani;
+}
 
 InputHandler::States InputHandler::getCurrent() 
 {
 	return current;
+}
+InputHandler::Animations InputHandler::getCurrentAni()
+{
+	return currentAni;
 }
 
 void InputHandler::handleInput(SDL_Event & event)
@@ -27,28 +35,34 @@ void InputHandler::handleInput(SDL_Event & event)
 	case SDL_KEYDOWN:
 		switch (event.key.keysym.sym)
 		{
-	
 		case SDLK_SPACE:
 			if (getCurrent() == Idle)
 			{
 				finiteStateMachine->jumping();
 				setCurrent(Jumping);
+				setCurrentAni(idleToJumping);
 			}
-			
-			//button_Space->execute();
-			//macroCmd->add(button_Space);
 			break;
 		case SDLK_UP:
 			if (getCurrent() == Idle)
 			{
 				finiteStateMachine->climbing();
 				setCurrent(Climbing);
+				setCurrentAni(idleToClimbing);
 			}
 			break;
 		case SDLK_RETURN:
 
 			if (getCurrent() != Idle)
 			{
+				if (getCurrent() == Climbing)
+				{
+					setCurrentAni(climbingToIdle);
+				}
+				else if (getCurrent() == Jumping)
+				{
+					setCurrentAni(jumpingToIdle);
+				}
 				finiteStateMachine->idle();
 				setCurrent(Idle);
 			}
