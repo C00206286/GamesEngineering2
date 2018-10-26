@@ -214,7 +214,6 @@ int main(int argc, char* args[])
 							{
 								animationCount = animationCount + 1;
 								delayCount = 0;
-								std::cout << "ani count = " << animationCount << std::endl;
 
 							}
 							if (animationCount == 5)

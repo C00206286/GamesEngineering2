@@ -26,8 +26,6 @@ public:
 	};
 	void handleInput(SDL_Event & event);
 	void setCurrent(States);
-	void setCount(double count);
-	double getCount();
 	States getCurrent();
 	void setCurrentAni(Animations);
 	Animations getCurrentAni();

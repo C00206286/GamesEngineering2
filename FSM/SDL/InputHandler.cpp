@@ -13,6 +13,7 @@ InputHandler::~InputHandler()
 void InputHandler::setCurrent(States state)
 {
 	current = state;
+	finiteStateMachine->idle();
 }
 void InputHandler::setCurrentAni(Animations ani)
 {
@@ -53,7 +54,7 @@ void InputHandler::handleInput(SDL_Event & event)
 			break;
 		case SDLK_RETURN:
 
-			if (getCurrent() != Idle)
+			if (getCurrent() != IdleAni)
 			{
 				if (getCurrent() == Climbing)
 				{
