@@ -1,2 +1,7 @@
-﻿  Climbing.cpp
-  SDL.vcxproj -> C:\Users\gameuser\Desktop\GamesEngineering2\FSM\Debug\SDL.exe
+﻿  Animation.cpp
+c:\users\brendan\desktop\gamesengineering2\fsm\sdl\animation.cpp(49): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\brendan\desktop\gamesengineering2\fsm\sdl\animation.cpp(76): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\brendan\desktop\gamesengineering2\fsm\sdl\animation.cpp(103): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\brendan\desktop\gamesengineering2\fsm\sdl\animation.cpp(129): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\brendan\desktop\gamesengineering2\fsm\sdl\animation.cpp(156): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  SDL.vcxproj -> C:\Users\Brendan\Desktop\GamesEngineering2\FSM\Debug\SDL.exe

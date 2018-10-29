@@ -2,6 +2,7 @@
 #include "Jumping.h"
 #include "Climbing.h"
 
+
 void Idle::jumping(Animation* a)
 {
 	std::cout << "Jumping" << std::endl;

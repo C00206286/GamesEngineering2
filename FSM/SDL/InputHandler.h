@@ -9,30 +9,11 @@ public:
 	InputHandler();
 	~InputHandler();
 
-	enum States
-	{
-		Jumping,
-		Idle,
-		Climbing
-	};
-	enum Animations
-	{
-		IdleAni,
-		jumpingToIdle,
-		idleToJumping,
-		idleToClimbing,
-		climbingToIdle,
-		idling
-	};
+
 	void handleInput(SDL_Event & event);
-	void setCurrent(States);
-	States getCurrent();
-	void setCurrentAni(Animations);
-	Animations getCurrentAni();
+	SDL_Rect handlerUpdate(SDL_Rect rectImage);
 
 private:
 
 	Animation * finiteStateMachine;
-	States current;
-	Animations currentAni;
 };
