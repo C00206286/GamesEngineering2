@@ -1,8 +1,9 @@
 #pragma once
 #include "Entity.h"
 #include "HealthComponent.h"
+#include "PositionComponent.h"
 
-class HealthSystem
+class ControlSystem
 {
 	std::vector<Entity*> entities;
 	std::vector<Component*> components;
@@ -10,15 +11,15 @@ class HealthSystem
 public:
 	void addEntity(Entity * e) { entities.push_back(e); }
 	void update() {
-		std::cout << "HealthSystem Update" << std::endl;
+		std::cout << "ControlSystem Update" << std::endl;
 		for (Entity* ent : entities)
 		{
-				std::vector<Component*> components = ent->getComponents();
-				for (Component* c : components)
-				{
-				    HealthComponent* c1 = static_cast<HealthComponent *>(c);
-					c1->setHealth(100);
-				}
+			std::vector<Component*> components = ent->getComponents();
+			for (Component* c : components)
+			{
+				PositionComponent* c1 = static_cast<PositionComponent *>(c);
+				c1->setPositionX(100);
+			}
 		}
 		/* Loop through Entities with */
 		/* HealthComponents and Update */

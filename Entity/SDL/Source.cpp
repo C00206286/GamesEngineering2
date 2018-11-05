@@ -5,6 +5,7 @@ and may not be redistributed without written permission.*/
 #include <SDL.h>
 #include <stdio.h>
 #include "HealthSystem.h"
+#include "ControlSystem.h"
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 640;
@@ -15,12 +16,16 @@ int main(int argc, char* args[])
 	double count = 0;
 	Entity player;
 	//PositionComponent pc;
-	player.addComponent(new HealthComponent);
-	//player.addComponent(pc);
+	HealthComponent HealthComp;
+	PositionComponent PositionComp;
+	player.addComponent(&HealthComp);
+	player.addComponent(&PositionComp);
 
 	HealthSystem hs;
+	ControlSystem cs;
 	//PositionSystem ps;
-	hs.addEntity(player);
+	hs.addEntity(&player);
+	cs.addEntity(&player);
 	//ps.addEntity(player);
 
 	int quit = 0;
@@ -64,8 +69,8 @@ int main(int argc, char* args[])
 	while (!quit)
 	{
 		hs.update();
-		count++;
-		std::cout << "count = " << count << std::endl;
+		cs.update();
+	
 		//ps.update();	  
 		while (SDL_PollEvent(&event))
 		{

@@ -7,7 +7,8 @@ public:
 	HealthComponent() : health(100) {}
 	/* Data Only */
 	int getHealth() { return health; }
-	void setHealth(int health) { this->health = health; }
+	void setHealth(int health) { this->health = health;
+	}
 private:
 	int health;
 	

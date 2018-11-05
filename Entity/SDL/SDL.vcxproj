@@ -126,9 +126,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component.h" />
+    <ClInclude Include="ControlSystem.h" />
     <ClInclude Include="HealthComponent.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="HealthSystem.h" />
+    <ClInclude Include="PositionComponent.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
