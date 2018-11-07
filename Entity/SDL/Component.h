@@ -3,7 +3,6 @@
 class Component
 {
 public:
-	void say() {
-		std::cout << "Hellooooooooooo" << std::endl;
-	}
+	int id = 0;
+	virtual ~Component(){}
 };

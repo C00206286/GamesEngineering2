@@ -7,15 +7,15 @@
 class PositionComponent : public Component
 {
 public:
-	PositionComponent() : positionX(100),positionY(100) {}
+	PositionComponent(int startPositionX, int startPositionY) : positionX(startPositionX),positionY(startPositionY) { id = 2; }
 	/* Data Only */
 	int getPositionX() { return positionX; }
-	int getPositionY() { return positionX; }
-	void setPositionX(int positionX) {
-		this->positionX = positionX;
+	int getPositionY() { return positionY; }
+	void setPositionX(int givenX) {
+		this->positionX = givenX;
 	}
-	void setPositionY(int positionY) {
-		this->positionY = positionY;
+	void setPositionY(int givenY) {
+		this->positionY = givenY;
 	}
 private:
 	int positionX;

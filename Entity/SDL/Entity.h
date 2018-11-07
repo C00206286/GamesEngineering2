@@ -4,9 +4,9 @@
 #include "Component.h"
 class Entity
 {
-	int id;
 public:
-	Entity() {};
+	Entity(int idGiven) { id = idGiven; };
+	int id;
 	void addComponent(Component* c) { components.push_back(c); }
 	void removeComponent(Component* c) {/* TBI */ }
 	std::vector<Component*> getComponents() { return components; }
