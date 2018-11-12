@@ -36,6 +36,7 @@ int main(int argc, char* args[])
 	PositionComponent PositionComp3(200, 100);
 	dog.addComponent(&HealthComp);
 	dog.addComponent(&PositionComp3);
+	//dog.addComponent(&ControlComp);
 
 	PositionComponent PositionComp4(100, 700);
 	alien.addComponent(&HealthComp);
@@ -50,6 +51,7 @@ int main(int argc, char* args[])
 	hs.addEntity(&player);
 	cs.addEntity(&player);
 	rs.addEntity(&player);
+	//ais.addEntity(&player);
 
 	hs.addEntity(&cat);
 	cs.addEntity(&cat);

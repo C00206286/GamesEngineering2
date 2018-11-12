@@ -3,6 +3,6 @@ c:\users\gameuser\desktop\gamesengineering2\entity\sdl\aisystem.h(41): warning C
 c:\users\gameuser\desktop\gamesengineering2\entity\sdl\aisystem.h(46): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 c:\users\gameuser\desktop\gamesengineering2\entity\sdl\aisystem.h(51): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 c:\users\gameuser\desktop\gamesengineering2\entity\sdl\aisystem.h(56): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\gameuser\desktop\gamesengineering2\entity\sdl\source.cpp(73): warning C4101: 'event': unreferenced local variable
+c:\users\gameuser\desktop\gamesengineering2\entity\sdl\source.cpp(75): warning C4101: 'event': unreferenced local variable
 c:\users\gameuser\desktop\gamesengineering2\entity\sdl\controlsystem.h(93): warning C4715: 'ControlSystem::handleInput': not all control paths return a value
   SDL.vcxproj -> C:\Users\gameuser\Desktop\GamesEngineering2\Entity\Debug\SDL.exe

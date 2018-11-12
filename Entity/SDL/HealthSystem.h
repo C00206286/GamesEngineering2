@@ -32,7 +32,7 @@ public:
 						else
 						{
 							//AI health set
-							c1->setHealth(100);
+							//c1->setHealth(100);
 						}
 					}
 					if (c->id == 2)
