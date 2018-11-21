@@ -16,6 +16,10 @@ int main()
 	int d = 12;
 	int e = 13;
 	int f = 14;
+
+	int greater = 47;
+	int less = 0;
+	int minus = -47;
 	vector<int> v;
 	v.push_back(a);
 	v.push_back(b);
@@ -32,5 +36,31 @@ int main()
 		assert(p.testNumber(v[i]) == 1);
 	}
 	assert(p.testDuplicate(v) == 1);
+
+	v.clear();
+	v.push_back(a);
+	assert(p.testSize(v.size()) == 1);
+	
+	v.clear();
+
+	v.push_back(greater);
+	assert(p.testNumber(v[0]) == 0);
+
+	v.clear();
+
+	v.push_back(less);
+	assert(p.testNumber(v[0]) == 0);
+
+	v.clear();
+
+	v.push_back(minus);
+	assert(p.testNumber(v[0]) == 0);
+
+	v.clear();
+
+	v.push_back(a);
+	v.push_back(a);
+	assert(p.testDuplicate(v) == 0);
+
 	cin.get();
 }
