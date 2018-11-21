@@ -79,6 +79,8 @@ int main()
 			std::cout << *i << ' ';
 		}
 		std::cout << std::endl;
+		std::sort(lottoNumbers.begin(), lottoNumbers.end()); 
+		std::sort(guess.begin(), guess.end());
 		if (lottoNumbers == guess)
 		{
 			std::cout << "WINNER WINNER CHICKEN DINNER!!!!!!" << std::endl;
