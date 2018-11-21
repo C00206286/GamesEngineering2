@@ -91,5 +91,6 @@ int main()
 			lottoNumbers.clear();
 		}
 	}
+	system("PAUSE");
 	return 0;
 }
