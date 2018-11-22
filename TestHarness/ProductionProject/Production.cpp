@@ -1,12 +1,15 @@
 #include "Production.h"
 
-int Production::someMethod(int a)
+int Production::testSize(std::vector<int> vector)
 {
-	return a - a;
-}
-int Production::testSize(int size)
-{
-	return size;
+	if (vector.size() == 6)
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
 }
 int Production::testNumber(int number)
 {

@@ -4,8 +4,7 @@
 
 class Production{
 public:
-	int someMethod(int a);
-	int testSize(int size);
+	int testSize(std::vector<int> vector);
 	int testNumber(int number);
 	int testDuplicate(std::vector<int> vector);
 };

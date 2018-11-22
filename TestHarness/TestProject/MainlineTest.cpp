@@ -28,39 +28,49 @@ int main()
 	v.push_back(e);
 	v.push_back(f);
 
-	cout << p.someMethod(v[1]) << endl;
-	assert(p.someMethod(v[1]) == 0);
-	assert(p.testSize(v.size()) == 6);
+	// Test size of 6 passes
+	assert(p.testSize(v) == 1);
 	for (int i = 0; i < v.size(); i++)
 	{
+		// Test good numbers pass
 		assert(p.testNumber(v[i]) == 1);
 	}
+	// Test no duplicates pass
 	assert(p.testDuplicate(v) == 1);
 
 	v.clear();
 	v.push_back(a);
-	assert(p.testSize(v.size()) == 1);
+	// Test size of 1 fails
+	assert(p.testSize(v) == 0);
 	
 	v.clear();
 
+	// Test greater than fails
 	v.push_back(greater);
 	assert(p.testNumber(v[0]) == 0);
 
 	v.clear();
 
+	// Test less than fails
 	v.push_back(less);
 	assert(p.testNumber(v[0]) == 0);
 
 	v.clear();
 
 	v.push_back(minus);
+	// Test minus
 	assert(p.testNumber(v[0]) == 0);
 
 	v.clear();
 
+	// Test duplicates fail
 	v.push_back(a);
 	v.push_back(a);
 	assert(p.testDuplicate(v) == 0);
+
+	v.clear();
+	// Test empty size fails
+	assert(p.testSize(v) == 0);
 
 	cin.get();
 }

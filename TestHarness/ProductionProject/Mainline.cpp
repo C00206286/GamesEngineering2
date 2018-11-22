@@ -1,6 +1,7 @@
 #include "Production.h"
 #include <iostream>
 #include <vector>
+#include <ctime>
 
 bool addedNumber = false;
 bool winner = false;
@@ -8,40 +9,33 @@ bool invalid = false;
 
 int main()
 {
+	srand(time(NULL));
+
 	while (winner == false)
 	{
-		int a, b, c, d, e, f;
+		int guessNumber;
 		Production p;
 		std::vector<int> guess;
-		std::cout << "Please input your first number" << std::endl;
-		std::cin >> a;
-		guess.push_back(a);
-		std::cout << "Please input your second number" << std::endl;
-		std::cin >> b;
-		guess.push_back(b);
-		std::cout << "Please input your third number" << std::endl;
-		std::cin >> c;
-		guess.push_back(c);
-		std::cout << "Please input your fourth number" << std::endl;
-		std::cin >> d;
-		guess.push_back(d);
-		std::cout << "Please input your fifth number" << std::endl;
-		std::cin >> e;
-		guess.push_back(e);
-		std::cout << "Please input your sixth number" << std::endl;
-		std::cin >> f;
-		guess.push_back(f);
+		for (int i = 0; i < 6; i++)
+		{
+			std::cout << "Please input a number" << std::endl;
+			std::cin >> guessNumber;
+			if (p.testNumber(guessNumber) == 1)
+			{
+				guess.push_back(guessNumber);
+			}
+			else
+			{
+				std::cout << "Your input is invalid" << std::endl;
+				std::cin.clear();
+				std::cin.ignore(INT_MAX, '\n');
+				continue;
+			}
+		}
 
-		if (p.testSize(guess.size()) != 6)
+		if (p.testSize(guess) == 0)
 		{
 			std::cout << "You did not enter enough numbers" << std::endl;
-		}
-		for (int i = 0; i < guess.size(); i++)
-		{
-			if (p.testNumber(guess[i]) == 0)
-			{
-				std::cout << "You entered an invaled number " << +guess[i] << std::endl;
-			}
 		}
 		if (p.testDuplicate(guess) == 0)
 		{
@@ -67,6 +61,10 @@ int main()
 				}
 			}
 		}
+
+		std::sort(lottoNumbers.begin(), lottoNumbers.end()); 
+		std::sort(guess.begin(), guess.end());
+
 		std::cout << "The lotto numbers are = ";
 		for (auto i = lottoNumbers.begin(); i != lottoNumbers.end(); ++i)
 		{
@@ -79,8 +77,6 @@ int main()
 			std::cout << *i << ' ';
 		}
 		std::cout << std::endl;
-		std::sort(lottoNumbers.begin(), lottoNumbers.end()); 
-		std::sort(guess.begin(), guess.end());
 		if (lottoNumbers == guess)
 		{
 			std::cout << "WINNER WINNER CHICKEN DINNER!!!!!!" << std::endl;
