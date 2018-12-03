@@ -58,6 +58,7 @@ int main()
 				{
 					lottoNumbers.pop_back();
 					addedNumber = false;
+					std::cout << "Duplicate" << std::endl;
 				}
 			}
 		}
