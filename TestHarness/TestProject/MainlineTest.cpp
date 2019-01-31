@@ -71,6 +71,9 @@ int main()
 	v.clear();
 	// Test empty size fails
 	assert(p.testSize(v) == 0);
+	
+	
+	std::cout << "All Tests Pass";
 
 	cin.get();
 }
