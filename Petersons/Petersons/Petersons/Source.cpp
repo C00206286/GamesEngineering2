@@ -2,44 +2,40 @@
 #include <thread>
 #include <deque>
 #include <mutex>
+#include <vector>
 #include <chrono>
 #include <condition_variable>
 
-using std::deque;  // Allows fast insertion and deletion at start and end.
-std::mutex mu, cout_mu;  // Protect shared data from being accesed at the same time.
-std::condition_variable cond;  // Used to block threads.
 
-const int n = 3;
+const int n = 4;
 int inN[n];
 int lastArray[n];
+
+std::vector<std::thread> threads;
 
 void functionAll(void*i)
 {
 	int number = (int)i;
-		while (true) {
-			for (int j = 0; j < n - 1; j++) {
-				inN[number] = j;
-				lastArray[j] = number;
-				while (lastArray[j] == number) {
-					for (int k = 0; k <= n; k++) {
-						if (k != number)
-						{
-							if (inN[k] >= j) {
-							}
-							else {
-								std::cout << "CALLED = " << +number << std::endl;
-								break;
-							}
-						}
-					}
+	while (true) {
+		for (int j = 1; j <= n; j++) {
+			inN[number] = j;
+			lastArray[j] = number;
 
+			for (int k = 1; k <= n; k++) {
+				if (k != number)
+				{
+					while (inN[k] >= inN[number] && lastArray[j] == number);
 				}
-					//and there exists k ≠ i, such that level[k] ≥ ℓ
-					//wait
 			}
-			inN[number] = 0;
 		}
-}
+
+		//and there exists k ≠ i, such that level[k] ≥ ℓ
+		//wait
+		std::cout << "CALLED = " << +number << std::endl;
+		inN[number] = 0;
+	}
+	}
+
 
 bool in1 = false;
 bool in2 = false;
@@ -72,14 +68,13 @@ void function2() {
 
 int main() {
 
-	std::thread n1thread(functionAll,(void*)0);
-	std::thread n2thread(functionAll,(void*)1);
-	std::thread n3thread(functionAll,(void*)2);
-	//std::thread n4thread(functionAll, (void*)3);
-	//std::thread consumer_thread(function2);
-
-	n1thread.join();
-	n2thread.join();
-	n3thread.join();
+	for (int i = 1; i <= n; i++)
+	{
+		threads.push_back(std::thread(functionAll, (void*)i));
+	}
+	for (int i = 0; i <= n; i++)
+	{
+		threads[i].join();
+	}
 	return 0;
 }
