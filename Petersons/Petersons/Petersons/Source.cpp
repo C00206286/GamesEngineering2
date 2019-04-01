@@ -7,7 +7,7 @@
 #include <condition_variable>
 
 
-const int n = 4;
+const int n = 30;
 int inN[n];
 int lastArray[n];
 
@@ -18,23 +18,27 @@ void functionAll(void*i)
 	int number = (int)i;
 	while (true) {
 		for (int j = 1; j <= n; j++) {
+			// remember number is in stage j and is last
 			inN[number] = j;
 			lastArray[j] = number;
 
 			for (int k = 1; k <= n; k++) {
 				if (k != number)
 				{
+					/* wait if process k is in higher numbered stage 
+					   and process number was the last to enter stage j */
 					while (inN[k] >= inN[number] && lastArray[j] == number);
 				}
 			}
 		}
 
 		//and there exists k ≠ i, such that level[k] ≥ ℓ
-		//wait
+		// critical section
 		std::cout << "CALLED = " << +number << std::endl;
 		inN[number] = 0;
+		// noncritical section
 	}
-	}
+}
 
 
 bool in1 = false;
